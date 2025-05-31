@@ -392,5 +392,37 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('mouseleave', function() {
             this.style.transform = '';
         });
+        
+        // 如果是有声书，添加点击播放功能
+        if (item.classList.contains('audiobook')) {
+            const bookLink = item.querySelector('.book-link');
+            if (bookLink) {
+                bookLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取书籍信息
+                    const title = item.querySelector('h4').textContent;
+                    const bookId = this.getAttribute('href').split('?id=')[1] || 'audio-001';
+                    
+                    try {
+                        // 保存当前播放状态
+                        if (window.audioManager) {
+                            window.audioManager.saveState();
+                            
+                            // 设置要播放的书籍ID
+                            const audioSrc = 'audio/这次我们怎么死？.mp3'; // 实际应用中应该根据ID获取
+                            window.audioManager.setCurrentBook(bookId, audioSrc);
+                        }
+                        
+                        // 跳转到播放页面
+                        window.location.href = `index.html?id=${bookId}`;
+                    } catch (error) {
+                        console.error('处理音频播放时出错:', error);
+                        // 如果出错，仍然跳转
+                        window.location.href = this.getAttribute('href');
+                    }
+                });
+            }
+        }
     });
 });

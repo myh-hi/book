@@ -301,13 +301,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 const collectionItem = this.closest('.collection-item');
                 const itemTitle = collectionItem.querySelector('.item-title').textContent;
                 
+                // 查找对应的链接和ID
+                const itemLink = collectionItem.querySelector('.item-link');
+                let bookId = 'audio-001'; // 默认ID
+                
+                if (itemLink) {
+                    const href = itemLink.getAttribute('href');
+                    if (href && href.includes('?id=')) {
+                        bookId = href.split('?id=')[1];
+                    }
+                }
+                
                 // 添加动画效果
                 this.classList.add('pulse');
-                setTimeout(() => {
-                    this.classList.remove('pulse');
-                    // 跳转到播放页面
-                    window.location.href = 'index.html';
-                }, 300);
+                
+                try {
+                    // 保存当前播放状态
+                    if (window.audioManager) {
+                        window.audioManager.saveState();
+                        
+                        // 设置要播放的书籍ID
+                        const audioSrc = 'audio/这次我们怎么死？.mp3'; // 实际应用中应该根据ID获取
+                        window.audioManager.setCurrentBook(bookId, audioSrc);
+                    }
+                    
+                    // 延迟跳转，确保状态已保存
+                    setTimeout(() => {
+                        this.classList.remove('pulse');
+                        // 跳转到播放页面
+                        window.location.href = `index.html?id=${bookId}`;
+                    }, 300);
+                } catch (error) {
+                    console.error('处理音频播放时出错:', error);
+                    // 如果出错，仍然跳转
+                    setTimeout(() => {
+                        this.classList.remove('pulse');
+                        window.location.href = 'index.html';
+                    }, 300);
+                }
             });
         });
         
@@ -321,6 +352,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const collectionItem = this.closest('.collection-item');
                 const itemTitle = collectionItem.querySelector('.item-title').textContent;
                 
+                // 查找对应的链接
+                const itemLink = collectionItem.querySelector('.item-link');
+                if (itemLink) {
+                    const href = itemLink.getAttribute('href');
+                    if (href) {
+                        window.open(href, '_blank');
+                        return;
+                    }
+                }
+                
+                // 如果没有找到链接，显示提示
                 alert(`打开PDF: ${itemTitle}`);
             });
         });

@@ -24,19 +24,19 @@
                     <i class="fas fa-headphones"></i>
                     <span>正在收听</span>
                 </div>
-                <a href="library.html" class="nav-item-link">
+                <a href="library.html" class="nav-item-link" data-href="library.html">
                     <div class="nav-item">
                         <i class="fas fa-book"></i>
                         <span>书库</span>
                     </div>
                 </a>
-                <a href="favorites.html" class="nav-item-link">
+                <a href="favorites.html" class="nav-item-link" data-href="favorites.html">
                     <div class="nav-item">
                         <i class="fas fa-heart"></i>
                         <span>收藏</span>
                     </div>
                 </a>
-                <a href="settings.html" class="nav-item-link">
+                <a href="settings.html" class="nav-item-link" data-href="settings.html">
                     <div class="nav-item">
                         <i class="fas fa-cog"></i>
                         <span>设置</span>
@@ -108,15 +108,15 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <button class="action-btn">
+                    <button class="action-btn" id="share-btn">
                         <i class="fas fa-share-alt"></i>
                         <span>分享</span>
                     </button>
-                    <button class="action-btn">
+                    <button class="action-btn" id="download-btn">
                         <i class="fas fa-download"></i>
                         <span>下载</span>
                     </button>
-                    <button class="action-btn">
+                    <button class="action-btn" id="favorite-btn">
                         <i class="fas fa-plus"></i>
                         <span>添加到收藏</span>
                     </button>
@@ -125,6 +125,8 @@
         </main>
     </div>
 
+    <script src="audio-manager.js"></script>
+    <script src="navigation.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

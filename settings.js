@@ -65,24 +65,36 @@ function getSettings() {
  * @param {any} value - 设置值
  */
 function saveSetting(key, value) {
-    if (!window.AppConfig) return;
-    
-    // 确保设置对象存在
-    if (!window.AppConfig.settings) {
-        window.AppConfig.settings = {};
-    }
-    
-    // 保存设置
-    window.AppConfig.settings[key] = value;
-    
-    // 如果是强调色，同步到general设置
-    if (key === 'accentColor' && window.AppConfig.general) {
-        window.AppConfig.general.highlightColor = value;
-    }
-    
-    // 如果设置改变了，触发保存 (如果config.js中实现了saveSettings函数)
-    if (typeof window.saveSettings === 'function') {
-        window.saveSettings();
+    try {
+        if (!window.AppConfig) {
+            console.warn('AppConfig未定义，无法保存设置');
+            return;
+        }
+        
+        // 确保设置对象存在
+        if (!window.AppConfig.settings) {
+            window.AppConfig.settings = {};
+        }
+        
+        // 保存设置
+        window.AppConfig.settings[key] = value;
+        
+        // 如果是强调色，同步到general设置
+        if (key === 'accentColor' && window.AppConfig.general) {
+            window.AppConfig.general.highlightColor = value;
+        }
+        
+        // 如果设置改变了，触发保存 (如果config.js中实现了saveSettings函数)
+        if (typeof window.saveSettings === 'function') {
+            window.saveSettings();
+        } else {
+            // 如果没有saveSettings函数，使用localStorage作为备份
+            localStorage.setItem('app_settings', JSON.stringify(window.AppConfig.settings));
+        }
+    } catch (error) {
+        console.error('保存设置时出错:', error);
+        // 显示错误提示
+        showToast('保存设置失败，请重试');
     }
 }
 
@@ -364,4 +376,52 @@ function resetButtonText(button, html) {
     if (!button) return;
     button.innerHTML = html;
     button.classList.remove('success');
+}
+
+/**
+ * 显示提示消息
+ * @param {string} message - 提示消息
+ * @param {boolean} isError - 是否为错误提示
+ */
+function showToast(message, isError = false) {
+    try {
+        // 检查是否已存在toast元素
+        let toast = document.getElementById('toast');
+        
+        if (!toast) {
+            // 创建toast元素
+            toast = document.createElement('div');
+            toast.id = 'toast';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: ${isError ? 'rgba(220, 53, 69, 0.9)' : 'rgba(0, 0, 0, 0.8)'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 12px;
+                z-index: 1000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            `;
+            document.body.appendChild(toast);
+        } else {
+            // 更新颜色
+            toast.style.backgroundColor = isError ? 'rgba(220, 53, 69, 0.9)' : 'rgba(0, 0, 0, 0.8)';
+        }
+        
+        // 设置消息
+        toast.textContent = message;
+        
+        // 显示并自动隐藏
+        toast.style.opacity = '1';
+        setTimeout(() => {
+            toast.style.opacity = '0';
+        }, 3000);
+    } catch (error) {
+        console.error('显示提示消息时出错:', error);
+    }
 } 
