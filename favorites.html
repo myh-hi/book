@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收藏 - 屹涵的有声书</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="favorites.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="favorites-page">
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>屹涵的有声书</h1>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索">
+            </div>
+            <div class="nav-items">
+                <a href="index.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-headphones"></i>
+                        <span>正在收听</span>
+                    </div>
+                </a>
+                <a href="library.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-book"></i>
+                        <span>书库</span>
+                    </div>
+                </a>
+                <div class="nav-item active">
+                    <i class="fas fa-heart"></i>
+                    <span>收藏</span>
+                </div>
+                <a href="settings.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <main class="favorites-main">
+            <div class="favorites-header">
+                <div class="header-content">
+                    <div class="header-text">
+                        <h1>我的收藏</h1>
+                        <p>探索您的有声书和PDF收藏</p>
+                    </div>
+                    <div class="header-stats">
+                        <div class="stat-pill">
+                            <i class="fas fa-book-open"></i>
+                            <span>42小时阅读时长</span>
+                        </div>
+                        <div class="stat-pill">
+                            <i class="fas fa-bookmark"></i>
+                            <span>2本藏品</span>
+                        </div>
+                        <div class="stat-pill">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>12天阅读</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filters-bar">
+                <div class="filters-group">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-border-all"></i>
+                        <span>全部</span>
+                    </button>
+                    <button class="filter-btn" data-filter="audiobook">
+                        <i class="fas fa-headphones"></i>
+                        <span>有声书</span>
+                    </button>
+                    <button class="filter-btn" data-filter="pdf">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF</span>
+                    </button>
+                    <button class="filter-btn" data-filter="recent">
+                        <i class="fas fa-history"></i>
+                        <span>最近</span>
+                    </button>
+                </div>
+
+                <div class="view-sort-controls">
+                    <div class="sort-dropdown">
+                        <button class="sort-btn">
+                            <i class="fas fa-sort-amount-down"></i>
+                            <span>排序</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="sort-dropdown-menu">
+                            <a href="#" data-sort="name-asc">按名称 (A-Z)</a>
+                            <a href="#" data-sort="name-desc">按名称 (Z-A)</a>
+                            <a href="#" data-sort="progress">按进度</a>
+                            <a href="#" data-sort="recent">最近添加</a>
+                        </div>
+                    </div>
+                    
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-container">
+                <div class="collection-grid">
+                    <!-- 收藏内容将由JavaScript动态加载 -->
+                </div>
+            </div>
+            
+            <div class="activity-section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    阅读活动
+                </h2>
+                
+                <!-- 静态阅读图表 -->
+                <div class="activity-chart-container">
+                    <div class="chart-header">
+                        <h3>过去7天阅读时间</h3>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color audiobook-color"></span>
+                                <span>有声书</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color pdf-color"></span>
+                                <span>PDF</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 静态定义的阅读统计图表 -->
+                    <div class="activity-chart">
+                        <!-- 周一 -->
+                        <div class="chart-bar-container static-chart">
+                            <div class="chart-day">周一</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 40%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 15%"></div>
+                            </div>
+                            <div class="chart-value">55分钟</div>
+                        </div>
+                        
+                        <!-- 周二 -->
+                        <div class="chart-bar-container static-chart">
+                            <div class="chart-day">周二</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 20%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 25%"></div>
+                            </div>
+                            <div class="chart-value">45分钟</div>
+                        </div>
+                        
+                        <!-- 周三 -->
+                        <div class="chart-bar-container static-chart">
+                            <div class="chart-day">周三</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 30%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 0%"></div>
+                            </div>
+                            <div class="chart-value">30分钟</div>
+                        </div>
+                        
+                        <!-- 周四 -->
+                        <div class="chart-bar-container static-chart">
+                            <div class="chart-day">周四</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 0%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 35%"></div>
+                            </div>
+                            <div class="chart-value">35分钟</div>
+                        </div>
+                        
+                        <!-- 周五 -->
+                        <div class="chart-bar-container static-chart">
+                            <div class="chart-day">周五</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 50%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 10%"></div>
+                            </div>
+                            <div class="chart-value">60分钟</div>
+                        </div>
+                        
+                        <!-- 周六 -->
+                        <div class="chart-bar-container static-chart">
+                            <div class="chart-day">周六</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 10%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 5%"></div>
+                            </div>
+                            <div class="chart-value">15分钟</div>
+                        </div>
+                        
+                        <!-- 今天 -->
+                        <div class="chart-bar-container today static-chart">
+                            <div class="chart-day">今天</div>
+                            <div class="chart-bar">
+                                <div class="bar-segment audiobook-segment" style="height: 60%"></div>
+                                <div class="bar-segment pdf-segment" style="height: 20%"></div>
+                            </div>
+                            <div class="chart-value">80分钟</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 静态时间线 -->
+                <div class="activity-timeline">
+                    <h3>最近活动</h3>
+                    
+                    <div class="timeline">
+                        <!-- 静态定义的时间线项目 -->
+                        <div class="timeline-item static-timeline">
+                            <div class="timeline-icon audiobook-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">35分钟前</div>
+                                <h4>收听完成《这次我们怎么死？》第3章</h4>
+                                <div class="timeline-progress">
+                                    <div class="timeline-progress-bar">
+                                        <div class="timeline-progress-fill" style="width: 35%"></div>
+                                    </div>
+                                    <span>整体进度 35%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item static-timeline">
+                            <div class="timeline-icon pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">昨天 15:45</div>
+                                <h4>阅读《量子物理入门》</h4>
+                                <div class="timeline-progress">
+                                    <div class="timeline-progress-bar">
+                                        <div class="timeline-progress-fill" style="width: 25%"></div>
+                                    </div>
+                                    <span>整体进度 25%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item static-timeline">
+                            <div class="timeline-icon heart-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">3月15日 11:20</div>
+                                <h4>将《这次我们怎么死？》添加到收藏</h4>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item static-timeline">
+                            <div class="timeline-icon pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">3月14日 09:30</div>
+                                <h4>将《量子物理入门》添加到收藏</h4>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item static-timeline">
+                            <div class="timeline-icon audiobook-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-time">3月12日 20:15</div>
+                                <h4>开始收听《这次我们怎么死？》</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="empty-state" style="display: none;">
+                <div class="empty-icon">
+                    <i class="fas fa-heart-broken"></i>
+                </div>
+                <h2>还没有收藏</h2>
+                <p>浏览书库并添加喜欢的内容到收藏</p>
+                <a href="library.html" class="primary-btn">
+                    <i class="fas fa-book"></i>
+                    浏览书库
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- 脚本引用 -->
+    <script src="config.js"></script>
+    <script src="favorites.js"></script>
+</body>
+</html> 

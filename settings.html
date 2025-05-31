@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 屹涵的有声书</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="settings-page">
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>屹涵的有声书</h1>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索">
+            </div>
+            <div class="nav-items">
+                <a href="index.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-headphones"></i>
+                        <span>正在收听</span>
+                    </div>
+                </a>
+                <a href="library.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-book"></i>
+                        <span>书库</span>
+                    </div>
+                </a>
+                <a href="favorites.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-heart"></i>
+                        <span>收藏</span>
+                    </div>
+                </a>
+                <div class="nav-item active">
+                    <i class="fas fa-cog"></i>
+                    <span>设置</span>
+                </div>
+            </div>
+        </div>
+
+        <main class="settings-main">
+            <div class="settings-header">
+                <div class="header-content">
+                    <div class="header-text">
+                        <h1>设置</h1>
+                        <p>自定义您的阅读体验</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="settings-container">
+                <!-- 设置分类导航 -->
+                <div class="settings-nav">
+                    <div class="settings-nav-item active" data-section="appearance">
+                        <i class="fas fa-palette"></i>
+                        <span>外观</span>
+                    </div>
+                    <div class="settings-nav-item" data-section="playback">
+                        <i class="fas fa-play-circle"></i>
+                        <span>播放</span>
+                    </div>
+                    <div class="settings-nav-item" data-section="reading">
+                        <i class="fas fa-book-reader"></i>
+                        <span>阅读</span>
+                    </div>
+                    <div class="settings-nav-item" data-section="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span>通知</span>
+                    </div>
+                    <div class="settings-nav-item" data-section="storage">
+                        <i class="fas fa-database"></i>
+                        <span>存储</span>
+                    </div>
+                    <div class="settings-nav-item" data-section="about">
+                        <i class="fas fa-info-circle"></i>
+                        <span>关于</span>
+                    </div>
+                </div>
+                
+                <!-- 设置内容区域 -->
+                <div class="settings-content">
+                    <!-- 外观设置 -->
+                    <div class="settings-section active" id="appearance-section">
+                        <h2 class="section-title">外观设置</h2>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>强调色</h3>
+                                    <p>选择应用的主要颜色</p>
+                                </div>
+                                <div class="setting-control">
+                                    <div class="color-options">
+                                        <div class="color-option active" style="--color: #fc3c44;" data-color="#fc3c44"></div>
+                                        <div class="color-option" style="--color: #5e5ce6;" data-color="#5e5ce6"></div>
+                                        <div class="color-option" style="--color: #30d158;" data-color="#30d158"></div>
+                                        <div class="color-option" style="--color: #ff9f0a;" data-color="#ff9f0a"></div>
+                                        <div class="color-option" style="--color: #64d2ff;" data-color="#64d2ff"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 播放设置 -->
+                    <div class="settings-section" id="playback-section">
+                        <h2 class="section-title">播放设置</h2>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>默认音质</h3>
+                                    <p>选择有声书的默认播放质量</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="select-box">
+                                        <option value="normal">普通质量 (MP3)</option>
+                                        <option value="high">高质量 (AAC)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>自动播放</h3>
+                                    <p>打开有声书时自动开始播放</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>自动保存进度</h3>
+                                    <p>自动记住上次播放位置</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>默认音量</h3>
+                                    <p>设置初始播放音量</p>
+                                </div>
+                                <div class="setting-control">
+                                    <div class="range-slider">
+                                        <button class="range-btn decrease">
+                                            <i class="fas fa-volume-down"></i>
+                                        </button>
+                                        <div class="range-track">
+                                            <div class="range-fill" style="width: 70%;"></div>
+                                            <div class="range-handle" style="left: 70%;"></div>
+                                        </div>
+                                        <button class="range-btn increase">
+                                            <i class="fas fa-volume-up"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 阅读设置 -->
+                    <div class="settings-section" id="reading-section">
+                        <h2 class="section-title">阅读设置</h2>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>默认视图</h3>
+                                    <p>设置收藏和书库页面的默认视图</p>
+                                </div>
+                                <div class="setting-control">
+                                    <div class="button-group">
+                                        <button class="button-option active">
+                                            <i class="fas fa-th-large"></i>
+                                            <span>网格</span>
+                                        </button>
+                                        <button class="button-option">
+                                            <i class="fas fa-list"></i>
+                                            <span>列表</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>显示进度百分比</h3>
+                                    <p>在封面上显示阅读进度</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>PDF阅读器</h3>
+                                    <p>选择默认的PDF阅读方式</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="select-box">
+                                        <option value="internal">内置阅读器</option>
+                                        <option value="external">系统默认应用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item" data-setting="pdfPreview">
+                                <div class="setting-label">
+                                    <h3>PDF封面预览</h3>
+                                    <p>使用PDF文件第一页作为封面</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="pdf-preview-toggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 通知设置 -->
+                    <div class="settings-section" id="notifications-section">
+                        <h2 class="section-title">通知设置</h2>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>通知</h3>
+                                    <p>启用或禁用应用通知</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>新内容提醒</h3>
+                                    <p>有新书籍或更新时通知</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 存储设置 -->
+                    <div class="settings-section" id="storage-section">
+                        <h2 class="section-title">存储设置</h2>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>存储使用情况</h3>
+                                    <p>查看应用数据的存储情况</p>
+                                </div>
+                                <div class="storage-usage">
+                                    <div class="storage-bar">
+                                        <div class="storage-segment" style="width:60%; background:#ff375f;"></div>
+                                        <div class="storage-segment" style="width:15%; background:#5e5ce6;"></div>
+                                        <div class="storage-segment" style="width:10%; background:#30d158;"></div>
+                                        <div class="storage-segment" style="width:5%; background:#ff9f0a;"></div>
+                                    </div>
+                                    <div class="storage-legend">
+                                        <div class="storage-item">
+                                            <span class="storage-color" style="background:#ff375f;"></span>
+                                            <span>有声书 (6.5MB)</span>
+                                        </div>
+                                        <div class="storage-item">
+                                            <span class="storage-color" style="background:#5e5ce6;"></span>
+                                            <span>PDF文件 (1.2MB)</span>
+                                        </div>
+                                        <div class="storage-item">
+                                            <span class="storage-color" style="background:#30d158;"></span>
+                                            <span>封面图片 (0.8MB)</span>
+                                        </div>
+                                        <div class="storage-item">
+                                            <span class="storage-color" style="background:#ff9f0a;"></span>
+                                            <span>其他数据 (0.5MB)</span>
+                                        </div>
+                                    </div>
+                                    <div class="storage-total">总计: 9.0MB</div>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>清除缓存</h3>
+                                    <p>删除临时文件</p>
+                                </div>
+                                <div class="setting-control">
+                                    <button class="action-btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                        <span>清除缓存</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <h3>重置应用</h3>
+                                    <p>将应用恢复到初始状态</p>
+                                </div>
+                                <div class="setting-control">
+                                    <button class="action-btn dangerous">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span>重置应用</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 关于设置 -->
+                    <div class="settings-section" id="about-section">
+                        <h2 class="section-title">关于</h2>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="about-info">
+                                    <div class="app-logo">
+                                        <i class="fas fa-book-reader"></i>
+                                    </div>
+                                    <h3 class="app-name">屹涵的有声书</h3>
+                                    <p class="app-version">版本 1.0.0</p>
+                                    <p class="app-copyright">© 2024 屹涵. 保留所有权利。</p>
+                                    
+                                    <div class="about-links">
+                                        <a href="#" class="about-link">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>隐私政策</span>
+                                        </a>
+                                        <a href="#" class="about-link">
+                                            <i class="fas fa-file-contract"></i>
+                                            <span>服务条款</span>
+                                        </a>
+                                        <a href="#" class="about-link">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>联系我们</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="settings.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置导航交互
+            const navItems = document.querySelectorAll('.settings-nav-item');
+            const sections = document.querySelectorAll('.settings-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    
+                    // 更新导航高亮
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 显示对应内容区域
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === `${sectionId}-section`) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // 强调色选择
+            const colorOptions = document.querySelectorAll('.color-option');
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    const color = this.dataset.color;
+                    // 应用强调色
+                    document.documentElement.style.setProperty('--highlight-color', color);
+                });
+            });
+            
+            // 范围滑块交互
+            const rangeSliders = document.querySelectorAll('.range-slider');
+            rangeSliders.forEach(slider => {
+                const track = slider.querySelector('.range-track');
+                const fill = slider.querySelector('.range-fill');
+                const handle = slider.querySelector('.range-handle');
+                const decrease = slider.querySelector('.decrease');
+                const increase = slider.querySelector('.increase');
+                
+                // 点击滑动条的处理
+                track.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const percentage = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    updateRange(percentage);
+                });
+                
+                // 减少按钮
+                if (decrease) {
+                    decrease.addEventListener('click', function() {
+                        const currentWidth = parseFloat(fill.style.width) || 50;
+                        const newPercentage = Math.max(0, (currentWidth - 10) / 100);
+                        updateRange(newPercentage);
+                    });
+                }
+                
+                // 增加按钮
+                if (increase) {
+                    increase.addEventListener('click', function() {
+                        const currentWidth = parseFloat(fill.style.width) || 50;
+                        const newPercentage = Math.min(1, (currentWidth + 10) / 100);
+                        updateRange(newPercentage);
+                    });
+                }
+                
+                // 更新范围滑块的函数
+                function updateRange(percentage) {
+                    const percentValue = `${percentage * 100}%`;
+                    fill.style.width = percentValue;
+                    handle.style.left = percentValue;
+                }
+            });
+            
+            // 开关交互
+            const toggles = document.querySelectorAll('.toggle-switch input');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('change', function() {
+                    // 此处可以添加开关变化的处理代码
+                });
+            });
+            
+            // 按钮组交互
+            const buttonOptions = document.querySelectorAll('.button-option');
+            buttonOptions.forEach(button => {
+                button.addEventListener('click', function() {
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.button-option').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // 从配置中应用已保存的设置
+            if (window.AppConfig) {
+                // 应用强调色
+                const savedColor = window.AppConfig.general.highlightColor || '#fc3c44';
+                document.documentElement.style.setProperty('--highlight-color', savedColor);
+                
+                // 应用其他保存的设置
+                // ...
+            }
+        });
+    </script>
+</body>
+</html> 

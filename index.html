@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屹涵的有声书</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>屹涵的有声书</h1>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索">
+            </div>
+            <div class="nav-items">
+                <div class="nav-item active">
+                    <i class="fas fa-headphones"></i>
+                    <span>正在收听</span>
+                </div>
+                <a href="library.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-book"></i>
+                        <span>书库</span>
+                    </div>
+                </a>
+                <a href="favorites.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-heart"></i>
+                        <span>收藏</span>
+                    </div>
+                </a>
+                <a href="settings.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <main>
+            <div class="now-playing">
+                <div class="cover-container">
+                    <img src="images/1.jpg" alt="这次我们怎么死？" class="cover-img">
+                </div>
+                <div class="audio-info">
+                    <h2>这次我们怎么死？</h2>
+                    <p class="author">屹涵原创有声书</p>
+                    <div class="description">
+                        <p>深空悬浮的"方舟"号内，物理学家林默与工程师陈远在观测量子粒子云"奇点"时陷入死亡循环——每次能量注入超85%，空间站就会湮灭。当林默的崩溃与陈远的理性在重复毁灭中碰撞，一根因死亡烙印抽搐的手指揭开真相。倒计时再度跳动时，两个被时空囚困的灵魂终于并肩："这次……我们怎么死？"在量子风暴与维度撕裂的夹缝中，他们能否打破永恒轮回的枷锁？</p>
+                    </div>
+                    <div class="quality-selector">
+                        <button class="quality-btn" data-quality="high">高音质</button>
+                        <button class="quality-btn active" data-quality="normal">标准音质</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-container">
+                <div class="progress-container">
+                    <div class="current-time">00:00</div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="duration">00:00</div>
+                </div>
+
+                <div class="controls">
+                    <button class="control-btn" id="prev-btn">
+                        <i class="fas fa-backward-step"></i>
+                    </button>
+                    <button class="control-btn play-btn" id="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn" id="next-btn">
+                        <i class="fas fa-forward-step"></i>
+                    </button>
+                    
+                    <div class="volume-container">
+                        <i class="fas fa-volume-up"></i>
+                        <div class="volume-slider">
+                            <div class="volume-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-extras">
+                <div class="extra-info">
+                    <div class="extra-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>发布日期：2024年12月</span>
+                    </div>
+                    <div class="extra-item">
+                        <i class="fas fa-clock"></i>
+                        <span>时长：27分钟</span>
+                    </div>
+                    <div class="extra-item">
+                        <i class="fas fa-headset"></i>
+                        <span>类型：科幻故事</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="action-btn">
+                        <i class="fas fa-share-alt"></i>
+                        <span>分享</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-download"></i>
+                        <span>下载</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>添加到收藏</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

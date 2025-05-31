@@ -1,0 +1,239 @@
+/* 基础样式和重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #2a2a2a;
+    --card-bg: rgba(30, 30, 30, 0.75);
+    --highlight-color: #fc3c44;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    --button-bg: rgba(255, 255, 255, 0.1);
+    --button-hover: rgba(255, 255, 255, 0.15);
+    --button-active: rgba(255, 255, 255, 0.2);
+    --progress-bg: rgba(255, 255, 255, 0.2);
+    --progress-color: var(--text-primary);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --sidebar-width: 240px;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--secondary-bg);
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 100;
+}
+
+.logo {
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.logo h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+}
+
+/* 搜索栏 */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.search-bar i {
+    color: var(--text-secondary);
+    margin-right: 10px;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    width: 100%;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-secondary);
+}
+
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.nav-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.nav-item-link .nav-item:hover {
+    background-color: var(--button-hover);
+}
+
+.nav-item:hover {
+    background-color: var(--button-hover);
+}
+
+.nav-item.active {
+    background-color: var(--button-active);
+    color: var(--text-primary);
+}
+
+.nav-item i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+}
+
+/* 分类部分 */
+.category-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.category-section h3 {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+.category-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--text-secondary);
+}
+
+.category-item:hover {
+    background-color: var(--button-hover);
+}
+
+.category-item.active {
+    background-color: var(--button-active);
+    color: var(--text-primary);
+}
+
+.category-item i {
+    margin-right: 12px;
+    font-size: 1rem;
+}
+
+/* 主内容区域 */
+main {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 响应式设计 - 移动设备共享样式 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .logo {
+        margin-bottom: 0;
+    }
+    
+    .search-bar {
+        display: none;
+    }
+    
+    .category-section {
+        display: none;
+    }
+    
+    .nav-items {
+        flex-direction: row;
+    }
+    
+    .nav-item {
+        padding: 10px;
+    }
+    
+    .nav-item span {
+        display: none;
+    }
+    
+    .nav-item i {
+        margin-right: 0;
+    }
+    
+    main {
+        padding: 20px;
+    }
+} 

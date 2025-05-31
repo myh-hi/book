@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书库 - 屹涵的有声书</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="library.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        /* 覆盖收藏按钮的默认隐藏样式 */
+        .favorite-btn {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        /* 确保收藏按钮显示在PDF类型标签旁边 */
+        .book-item .book-cover .favorite-btn {
+            top: 10px;
+            right: 10px;
+        }
+        
+        /* 增大收藏按钮的触摸区域 */
+        .book-item .book-cover .favorite-btn {
+            width: 36px;
+            height: 36px;
+        }
+        
+        /* 强调收藏按钮的图标 */
+        .favorite-btn i {
+            font-size: 1.1rem;
+        }
+        
+        /* PDF预览画布样式 */
+        .pdf-preview-canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="library-page">
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>屹涵的有声书</h1>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="搜索">
+            </div>
+            <div class="nav-items">
+                <a href="index.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-headphones"></i>
+                        <span>正在收听</span>
+                    </div>
+                </a>
+                <div class="nav-item active">
+                    <i class="fas fa-book"></i>
+                    <span>书库</span>
+                </div>
+                <a href="favorites.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-heart"></i>
+                        <span>收藏</span>
+                    </div>
+                </a>
+                <a href="settings.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="category-section">
+                <h3>分类</h3>
+                <div class="category-items">
+                    <div class="category-item active">
+                        <i class="fas fa-th-large"></i>
+                        <span>全部</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-file-audio"></i>
+                        <span>有声书</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>PDF</span>
+                    </div>
+                    <div class="category-item">
+                        <i class="fas fa-book-open"></i>
+                        <span>图书</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="library-main">
+            <div class="page-header">
+                <h2>全部</h2>
+                <div class="view-options">
+                    <button class="view-btn active">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>有声书</h3>
+                <a href="#" class="see-all">查看全部</a>
+            </div>
+            
+            <div class="books-grid">
+                <div class="book-item audiobook">
+                    <div class="book-cover">
+                        <img src="images/1.jpg" alt="这次我们怎么死？">
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="width: 35%"></div>
+                        </div>
+                        <div class="book-percentage">35%</div>
+                        <div class="favorite-btn">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>这次我们怎么死？</h4>
+                        <p class="book-author">屹涵原创有声书</p>
+                    </div>
+                    <a href="index.html" class="book-link"></a>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>PDF 文件</h3>
+                <a href="#" class="see-all">查看全部</a>
+            </div>
+            
+            <div class="books-grid">
+                <div class="book-item pdf">
+                    <div class="book-cover">
+                        <img src="https://img0.baidu.com/it/u=105017489,3768238199&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750" alt="这次我们怎么死？">
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="book-percentage">0%</div>
+                        <div class="book-type">PDF</div>
+                        <div class="favorite-btn">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>这次我们怎么死？</h4>
+                        <p class="book-author">屹涵</p>
+                    </div>
+                    <a href="books/这次我们怎么死？.pdf" target="_blank" class="book-link"></a>
+                </div>
+                
+                <div class="book-item pdf">
+                    <div class="book-cover">
+                        <img src="https://img1.baidu.com/it/u=961679729,1074099111&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=753" alt="量子共鸣">
+                        <div class="progress-indicator">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="book-percentage">0%</div>
+                        <div class="book-type">PDF</div>
+                        <div class="favorite-btn">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h4>量子共鸣</h4>
+                        <p class="book-author">屹涵</p>
+                    </div>
+                    <a href="books/量子共鸣.pdf" target="_blank" class="book-link"></a>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <h3>最近添加</h3>
+                <a href="#" class="see-all">查看全部</a>
+            </div>
+            
+            <div class="books-grid">
+                <div class="book-item">
+                    <div class="book-cover new-item">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="book-info">
+                        <h4>添加新书籍</h4>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="library.js"></script>
+    <script src="pdf-preview.js"></script>
+</body>
+</html> 

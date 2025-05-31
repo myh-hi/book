@@ -1,0 +1,74 @@
+/* 动画效果样式 */
+
+/* 播放动画 */
+.cover-img.playing {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* 按钮点击动画 */
+.action-btn.clicked {
+    transform: scale(0.95);
+}
+
+/* 淡入效果 */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 淡出效果 */
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* 跳动效果 */
+.bounce {
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 列表视图的样式 */
+.books-grid.list-view {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+}
+
+.books-grid.list-view .book-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.books-grid.list-view .book-cover {
+    width: 80px !important;
+    flex-shrink: 0;
+}
+
+/* 悬浮阴影效果 */
+.hover-shadow {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+} 
